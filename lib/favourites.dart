@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namer_app/home.dart';
+import 'package:namer_app/names.dart';
 
 class Favourites extends StatefulWidget {
   const Favourites({super.key});
@@ -23,9 +24,19 @@ class _FavouritesState extends State<Favourites> {
         ),
         backgroundColor: Colors.red[50],
       ),
-      body: Column(
-
-      ),
+      body: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Text("You have ${favourites.length} favourites"),
+          ),
+          for (var name in favourites)
+            ListTile(
+              leading: Icon(Icons.favorite),
+              title: Text(name),
+            )
+        ],
+      )
     );
   }
 }
